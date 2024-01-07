@@ -1,1 +1,0 @@
-java -cp "src\emsee\lib\gson-2.6.2.jar;src\emsee\lib\poi-5.2.5.jar;src\emsee\lib\poi-ooxml-5.2.5.jar;src\emsee;src\emsee\run;." -d "C:\Users\sen\Desktop\GIT\3DPrint_DatabaseManager\src\emsee\run" src\emsee\run\Main.java

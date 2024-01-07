@@ -7,7 +7,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class SaveDataHandler {
-    String saveFileLocation = System.getProperty("user.dir")+"\\EmSee.Documents\\3DDatabaseManagerSaveFiles.txt";
+    String saveFileLocation = System.getProperty("user.dir")+"\\EmSee\\Documents\\3DDatabaseManagerSaveFiles.txt";
     public static final Gson gson = new Gson();
 
     public SaveDataHandler() {
@@ -31,13 +31,7 @@ public class SaveDataHandler {
             } catch (IOException e) {
                 System.out.println("Exception Occurred: " + e);
             }
-        } /*else {
-            try {
-                saveFile.delete();
-            } catch (IOException e) {
-                System.out.println("Exception Occurred: " + e);
-            }
-        }*/
+        }
         try {
             FileWriter saveWriter;
             saveWriter = new FileWriter(saveFile.getAbsoluteFile(), false);

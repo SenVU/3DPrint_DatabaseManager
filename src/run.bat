@@ -1,0 +1,2 @@
+java -cp emsee\run\lib\gson-2.6.2.jar;emsee\run\lib\poi-5.2.5.jar;emsee\run\lib\poi-ooxml-5.2.5.jar;emsee\run\lib\cursesapi-1.08.jar;emsee\run\lib\sparcebitset-1.3.jar;emsee\run\lib\commons-codec-1.16.0.jar;emsee\run\lib\sparcebitset-1.3.jar;emsee\run\lib\commons-io-2.15.0.jar;emsee\run\lib\commons-collections4-4.4.jar;emsee\run\lib\commons-compress-1.25.0.jar;emsee\run\lib\commons-math3-3.6.1.jar;emsee\run\lib\xmlbeans-5.2.0.jar;emsee\run\lib\log4j-api-2.21.1.jar;emsee\run\lib\poi-ooxml-lite-5.2.5.jar;. emsee\run\main.java
+pause

@@ -1,0 +1,1 @@
+javac -cp emsee\run\lib\gson-2.6.2.jar;emsee\run\lib\poi-5.2.5.jar;emsee\run\lib\poi-ooxml-5.2.5.jar;. emsee\run\*.java
