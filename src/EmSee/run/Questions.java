@@ -25,4 +25,12 @@ public class Questions {
         System.out.println(question);
         return Main.scanner.nextLine();
     }
+
+    public int integer(String question) {
+        System.out.println(question);
+        while (true) {
+            if(Main.scanner.hasNextInt()) return Main.scanner.nextInt();
+            else System.out.println("please enter a number");
+        }
+    }
 }

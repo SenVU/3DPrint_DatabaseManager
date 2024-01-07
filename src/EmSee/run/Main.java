@@ -8,10 +8,10 @@ public class Main {
     public static DatabaseHandler databaseHandler = new DatabaseHandler();
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        SaveData saveData = initialSaveDataLoading();
-        databaseHandler.loadDatabase(saveData);
+        initialSaveDataLoading();
         CommandHandler commandHandler = new CommandHandler();
-        System.out.println("What command do you want to EmSee.run? Type \"?\" for a list of all commands");
+        databaseHandler.loadDatabase();
+        System.out.println("What command do you want to run? Type \"?\" for a list of all commands");
         while(true) {
             commandHandler.RunCommand(scanner.nextLine());
         }
@@ -26,13 +26,12 @@ public class Main {
             saveDataHandler.WriteToFile(saveData);
         }
         else {
-            saveData = saveDataHandler.ReadFromSaveFile();
-        }
-
-
-        if(!questions.YesOrNo("The database directory is \"" + saveData.getDataBaseLocation() + "\" is that correct?")) {
-            saveData.setDataBaseLocation(questions.string("What is the new location?"));
-            saveDataHandler.WriteToFile(saveData);
+            saveDataHandler.ReadFromSaveFile();
+            saveData =  saveDataHandler.SilentReadData();
+            if (!questions.YesOrNo("The database directory is \"" + saveData.getDataBaseLocation() + "\" is that correct?")) {
+                saveData.setDataBaseLocation(questions.string("What is the new location?"));
+                saveDataHandler.WriteToFile(saveData);
+            }
         }
         return saveData;
     }
