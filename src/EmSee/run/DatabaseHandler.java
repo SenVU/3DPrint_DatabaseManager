@@ -1,6 +1,7 @@
 package EmSee.run;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -32,12 +33,13 @@ public class DatabaseHandler {
             nextEmptyID.setCellValue(i);
             Cell dateCell = sheet.getRow(i).createCell(1);
             dateCell.setCellValue(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
-            saveDatabase(saveData);
+            updateFormulas();
+
             openSheet("sales");
             while (true) {
                 Cell materialCodeCell = sheet.getRow(i).createCell(2);
                 materialCodeCell.setCellValue(Main.questions.integer("What is the material code?"));
-                saveDatabase(saveData);
+                updateFormulas();
                 openSheet("sales");
 
                 String materialName = sheet.getRow(i).getCell(3).getStringCellValue()+"-"+sheet.getRow(i).getCell(4).getStringCellValue()+"-"+sheet.getRow(i).getCell(5).getStringCellValue()+"-"+sheet.getRow(i).getCell(6).getStringCellValue();
@@ -68,6 +70,7 @@ public class DatabaseHandler {
     }
 
     public void saveDatabase(SaveData saveData) {
+        updateFormulas();
         try
         {
             FileOutputStream out = new FileOutputStream(saveData.getDataBaseLocation());
@@ -75,9 +78,17 @@ public class DatabaseHandler {
             out.close();
             loadDatabase();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             System.out.println("error on database saving " + e);
         }
+    }
+
+    public void updateFormulas() {
+        try {
+            XSSFFormulaEvaluator.evaluateAllFormulaCells(workbook);
+        } catch (Exception e) {
+            System.out.println("error on database formula updating " + e);
+        }
+
     }
 }
